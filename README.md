@@ -1,6 +1,14 @@
-# vue-side-menu
+# vue-admin-template
 
-> Side menu component
+> Admin Template with:
+Vue Router
+Buefy
+Sass
+Pug
+Webpack
+Eslint (Airbnb style guide)
+Babel
+
 
 ## Build Setup
 
