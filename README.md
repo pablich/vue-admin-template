@@ -1,13 +1,19 @@
 # vue-admin-template
 
-> Admin Template with:
+## Admin Template with:
 
 ▶️ Vue Router
+
 ▶️ Buefy
+
 ▶️ Sass
+
 ▶️ Pug
+
 ▶️ Webpack
-▶️ Eslint (Airbnb style guide)
+
+▶️ Eslint (Airbnb style guide) 
+
 ▶️ Babel
 
 
