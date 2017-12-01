@@ -1,6 +1,7 @@
 <template lang="pug">
     .columns.is-desktop.is-multiline
-        .column Home
+        .column 
+            h1.title Home
     </div>
 </template>
 
@@ -12,7 +13,6 @@ export default {
 
 <style scoped>
 .column {
-    background: #ff9999;
     margin: 10px
 }
 </style>

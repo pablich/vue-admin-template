@@ -1,10 +1,13 @@
 <template lang="pug">
 .column
+    vl-navbar
     .main(:style="'min-height: '+height+'px'")
         router-view
 </template>
 
 <script>
+import VlNavbar from './Navbar.vue';
+
 export default {
   name: 'Main',
   data() {
@@ -13,6 +16,7 @@ export default {
       width: 0,
     };
   },
+  components: { VlNavbar },
   mounted() {
     this.$nextTick(function () {
       window.addEventListener('resize', this.getWindowWidth);
@@ -39,8 +43,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .main {
   background: white;
+  padding: 15px;
+}
+.column {
+  padding: 0;
+}
+.navbar {
+  background-color: #4e2e47;
 }
 </style>

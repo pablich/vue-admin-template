@@ -11,15 +11,15 @@
       i.fa.fa-bars.fa-2x.toggle-btn(data-toggle='collapse', data-target='#menu-content')
       .menu-list(:class="{ active: active }")
         ul#menu-content.menu-content
-          sidebar-item(v-for="item in items", :item="item")
+          vl-sidebar-item(v-for="item in items", :item="item")
 </template>
 
 <script>
-  import SidebarItem from './Sidebar-item.vue';
+  import VlSidebarItem from './Sidebar-item.vue';
 
   export default {
     name: 'Menu',
-    components: { SidebarItem },
+    components: { VlSidebarItem },
     data() {
       return {
         height: 0,
