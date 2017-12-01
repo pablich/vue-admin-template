@@ -1,10 +1,14 @@
 <template lang="pug">
- aside.column
-  .sidebar(:style="size")
+ aside
+  .sidebar(:style="'min-height: '+height+'px'")
     .nav-side-menu
       .brand Brand Logo
+        button(class="navbar-burger", @click="toggle()")
+          span
+          span
+          span
       i.fa.fa-bars.fa-2x.toggle-btn(data-toggle='collapse', data-target='#menu-content')
-      .menu-list
+      .menu-list(:class="{ active: active }")
         ul#menu-content.menu-content.collapse.out
           li.active
             router-link(to='/')
@@ -35,17 +39,38 @@
     name: 'Menu',
     data() {
       return {
-        size: `min-height: ${window.innerHeight - 35}px`,
+        height: 0,
+        width: 0,
+        active: false,
       };
+    },
+    mounted() {
+      this.$nextTick(function () {
+        window.addEventListener('resize', this.getWindowWidth);
+        window.addEventListener('resize', this.getWindowHeight);
+        this.getWindowWidth();
+        this.getWindowHeight();
+      });
+    },
+    methods: {
+      toggle() {
+        this.active = !this.active;
+      },
+      getWindowWidth() {
+        this.width = document.documentElement.clientWidth;
+      },
+      getWindowHeight() {
+        this.height = document.documentElement.clientHeight - 35;
+      },
+    },
+    beforeDestroy() {
+      window.removeEventListener('resize', this.getWindowWidth);
+      window.removeEventListener('resize', this.getWindowHeight);
     },
   };
 </script>
 
 <style>
-#app > .columns > aside {
-  max-width: 260px;
-  padding: 0!important;
-}
 #app > .columns {
   margin: 0!important;
 }
@@ -66,10 +91,12 @@
   color: #e1ffff;
 }
 .nav-side-menu .brand {
-  line-height: 50px;
+  line-height: 52px;
   display: block;
-  text-align: center;
+  text-align: left;
   font-size: 14px;
+  padding-left: 20px;
+  height: 52px;
 }
 .nav-side-menu .toggle-btn {
   display: none;
@@ -101,28 +128,28 @@
 
 .nav-side-menu ul .sub-menu li.active,
 .nav-side-menu li .sub-menu li.active {
-  color: #d19b3d;
+  color: #e2add5;
 }
 .nav-side-menu ul .sub-menu li.active a,
 .nav-side-menu li .sub-menu li.active a {
-  color: #d19b3d;
+  color: #e2add5;
 }
 .nav-side-menu ul .sub-menu li,
 .nav-side-menu li .sub-menu li {
-  background-color: #181c20;
-  border: none;
-  line-height: 28px;
-  border-bottom: 1px solid #23282e;
-  margin-left: 0px;
-  margin-top: 0;
+  background-color: #6d3f61;
+    border: none;
+    line-height: 28px;
+    border-bottom: 1px solid #6c3f60;
+    margin-left: 0px;
+    margin-top: 0;
 }
 .nav-side-menu ul .sub-menu li:hover,
 .nav-side-menu li .sub-menu li:hover {
   background-color: #020203;
 }
 
-.nav-side-menu ul .sub-menu li:before,
-.nav-side-menu li .sub-menu li:before {
+.nav-side-menu ul .sub-menu a:before,
+.nav-side-menu li .sub-menu a:before {
   font-family: 'Material Design Icons';
   content: "\F142";
   display: inline-block;
@@ -140,6 +167,7 @@
   color: #e1ffff;
   display: inline-block;
   text-decoration: none!important;
+  width: 100%;
 }
 .nav-side-menu .collapse button i,
 .nav-side-menu li a i {
@@ -188,40 +216,47 @@
     margin: 0;
     border-radius: 0;
 }
-@media (max-width: 767px) {
-  .nav-side-menu {
-    position: relative;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  .nav-side-menu .toggle-btn {
-    display: block;
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 10 !important;
-    padding: 3px;
-    background-color: #ffffff;
-    color: #000;
-    width: 40px;
-    text-align: center;
-  }
-  .brand {
-    text-align: left !important;
-    font-size: 22px;
-    padding-left: 20px;
-    line-height: 50px !important;
-  }
-}
-@media (min-width: 767px) {
-  .nav-side-menu .menu-list .menu-content {
-    display: block;
-  }
-}
 body {
   margin: 0px;
   padding: 0px;
 }
-
+.navbar-burger {
+  display: none
+}
+.navbar-burger:focus {
+    outline: none;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    bottom: 35px;
+    min-height: auto!important;
+  }
+  .sidebar .menu-list{
+    opacity: 0;
+    height: 0;
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    -o-transition: all 1s linear;
+    transition: all 1s linear;
+  }
+  .sidebar .menu-list.active{
+    opacity: 1;
+    height: auto;
+  }
+  .navbar-burger {
+    cursor: pointer;
+    position: relative;
+    width: 3.25rem;
+    margin-left: auto;
+    display: inline-block;
+    float: right;
+    background: #4d2e47;
+    border: none;
+    border-radius: 0;
+  }
+  .navbar-burger span{
+    background: #fff
+  }
+}
 </style>

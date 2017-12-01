@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    .columns
+    .columns.is-12-mobile
       vl-sidebar
       vl-main
     vl-footer
