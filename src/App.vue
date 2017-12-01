@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import VlSidebar from './components/layout/Sidebar.vue';
+import VlSidebar from './components/layout/Sidebar/Sidebar-list.vue';
 import VlMain from './components/layout/Main.vue';
 import VlFooter from './components/layout/Footer.vue';
 

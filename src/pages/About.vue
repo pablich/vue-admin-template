@@ -1,10 +1,6 @@
 <template lang="pug">
     .columns.is-desktop
-        .column a
-        .column b
-        .column o
-        .column u
-        .column t
+        .column About
     </div>
 </template>
 

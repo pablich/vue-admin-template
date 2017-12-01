@@ -1,9 +1,6 @@
 <template lang="pug">
     .columns.is-desktop.is-multiline
-        .column 1
-        .column 2
-        .column 3
-        .column 4
+        .column Home
     </div>
 </template>
 

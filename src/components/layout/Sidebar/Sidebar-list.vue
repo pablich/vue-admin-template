@@ -1,47 +1,50 @@
 <template lang="pug">
  aside
-  .sidebar(:style="'min-height: '+height+'px'")
+  .sidebar(:style="'min-height: '+height+'px'", :class="{ active: active }")
     .nav-side-menu
-      .brand Brand Logo
+      .brand 
+        span Brand Logo
         button(class="navbar-burger", @click="toggle()")
           span
           span
           span
       i.fa.fa-bars.fa-2x.toggle-btn(data-toggle='collapse', data-target='#menu-content')
       .menu-list(:class="{ active: active }")
-        ul#menu-content.menu-content.collapse.out
-          li.active
-            router-link(to='/')
-              i.mdi.mdi-home
-              |  Home
-          
-          li
-            router-link(to='/about')
-              i.mdi.mdi-information
-              |  About
-          b-collapse(:open='false')
-            li.collapsed(slot='trigger') 
-              a(href='#')
-                i.mdi.mdi-arrow-down-drop-circle-outline
-                |  Collapse
-                span.arrow
-            ul#products.sub-menu.collapse
-              li.active
-                a(href='#') CSS3 Animation
-              li
-                a(href='#') General
-              li
-                a(href='#') Buttons
+        ul#menu-content.menu-content
+          sidebar-item(v-for="item in items", :item="item")
 </template>
 
 <script>
+  import SidebarItem from './Sidebar-item.vue';
+
   export default {
     name: 'Menu',
+    components: { SidebarItem },
     data() {
       return {
         height: 0,
         width: 0,
         active: false,
+        items: [{
+          name: 'Home',
+          url: '/',
+          icon: 'mdi-home',
+        }, {
+          name: 'About',
+          url: '/About',
+          icon: 'mdi-home',
+        }, {
+          name: 'About',
+          url: '/About',
+          icon: 'mdi-home',
+          childrens: [{
+            name: 'Children 1',
+            url: '/Children1',
+          }, {
+            name: 'Children 2',
+            url: '/Children2',
+          }],
+        }],
       };
     },
     mounted() {
@@ -180,6 +183,11 @@
   background: none;
   color: #fff
 }
+.nav-side-menu .collapse-content ul {
+    border-left: none!important;
+    margin: 0;
+    padding: 0;
+}
 .nav-side-menu .collapse button:hover {
     border-left: 3px solid #d19b3d;
     background-color: #4f5b69;
@@ -226,6 +234,31 @@ body {
 .navbar-burger:focus {
     outline: none;
 }
+.navbar-burger {
+  cursor: pointer;
+  position: relative;
+  width: 3.25rem;
+  margin-left: auto;
+  display: inline-block;
+  float: right;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+.navbar-burger span{
+  background: #fff
+}
+@media (min-width: 769px) {
+  .sidebar.active{
+      width: 60px;
+  }
+  .sidebar.active li span{
+      display: none;
+  }
+  .sidebar.active  .brand > span{
+      display: none;
+  }
+}
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
@@ -245,18 +278,7 @@ body {
     height: auto;
   }
   .navbar-burger {
-    cursor: pointer;
-    position: relative;
-    width: 3.25rem;
-    margin-left: auto;
-    display: inline-block;
-    float: right;
     background: #4d2e47;
-    border: none;
-    border-radius: 0;
-  }
-  .navbar-burger span{
-    background: #fff
   }
 }
 </style>
