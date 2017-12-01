@@ -1,8 +1,6 @@
 <template lang="pug">
 nav.navbar
-      .navbar-brand
-      #navMenuColorlight-example.navbar-menu
-        .navbar-start
+      #navMenuColorlight-example
         .navbar-end
           .navbar-item
             .field.is-grouped
@@ -28,6 +26,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 
 </style>

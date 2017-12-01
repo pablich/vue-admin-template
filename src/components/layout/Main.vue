@@ -31,9 +31,11 @@ export default {
     },
     getWindowHeight() {
       const headerHeight = 52;
+      const navbarHeight = 32;
       const footerHeight = 35;
       const padding = 20;
-      this.height = document.documentElement.clientHeight - headerHeight - footerHeight - padding;
+      const totalHeight = headerHeight + footerHeight + padding + navbarHeight;
+      this.height = document.documentElement.clientHeight - totalHeight;
     },
   },
   beforeDestroy() {
