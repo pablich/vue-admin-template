@@ -1,6 +1,7 @@
 <template lang="pug">
 nav.navbar
-      #navMenuColorlight-example
+      #navMenuColorlight-example.navbar-menu
+        .navbar-start
         .navbar-end
           .navbar-item
             .field.is-grouped
@@ -27,5 +28,10 @@ export default {
 </script>
 
 <style>
-
+.navbar-menu {
+  display: inline;
+}
+.field.is-grouped {
+    justify-content: flex-end;
+}
 </style>

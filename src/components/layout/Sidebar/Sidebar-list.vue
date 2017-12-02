@@ -28,15 +28,23 @@
         items: [{
           name: 'Home',
           url: '/',
-          icon: 'mdi-home',
+          icon: 'mdi mdi-home',
         }, {
           name: 'About',
           url: '/About',
-          icon: 'mdi-home',
+          icon: 'mdi mdi-home',
         }, {
           name: 'About',
           url: '/About',
-          icon: 'mdi-home',
+          icon: 'mdi mdi-home',
+        }, {
+          name: 'About',
+          url: '/About',
+          icon: 'mdi mdi-home',
+        }, {
+          name: 'Collapse',
+          url: '/Collapse',
+          icon: 'mdi mdi-home',
           childrens: [{
             name: 'Children 1',
             url: '/Children1',
@@ -167,10 +175,19 @@
 }
 .nav-side-menu li a {
   text-decoration: none;
-  color: #e1ffff;
+  color: #fff;
   display: inline-block;
   text-decoration: none!important;
   width: 100%;
+}
+.nav-side-menu .menu-list.active li:hover {
+    width: 200px;
+    background: #4d2e47;
+    z-index: 99999;
+    position: absolute;
+}
+.nav-side-menu .menu-list.active li:hover span {
+    display: inline-block;
 }
 .nav-side-menu .collapse button i,
 .nav-side-menu li a i {

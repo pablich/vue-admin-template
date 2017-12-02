@@ -2,7 +2,7 @@
 li
     b-collapse(:open='false', v-if="item.childrens")
         a(href='#').collapsed(slot='trigger') 
-            i.mdi.mdi-arrow-down-drop-circle-outline
+            i(:class="item.icon")
             span {{item.name}}
             span.arrow
         ul#products.sub-menu.collapse
@@ -10,7 +10,7 @@ li
                 router-link(:to='children.url') 
                  span {{children.name}}
     router-link(v-else, :to='item.url')
-        i.mdi(:class="item.icon") 
+        i(:class="item.icon") 
         span {{item.name}}
 </template>
 <script>
